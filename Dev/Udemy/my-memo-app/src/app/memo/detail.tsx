@@ -1,19 +1,19 @@
-import { View, Text, ScrollView } from "react-native"
+import { View, Text, ScrollView, StyleSheet } from "react-native"
 
 import Header from "../../components/header"
 import CircleButton from "../../components/circleButton"
 
 const Detail = (): JSX.Element => {
   return(
-    <View>
+    <View style={styles.container}>
       <Header />
-      <View>
-        <Text>買い物リスト</Text>
-        <Text>2024年11月30日 20:00</Text>
+      <View style={styles.memoHeader}>
+        <Text style={styles.memoTitle}>買い物リスト</Text>
+        <Text style={styles.memoDate}>2024年11月30日 20:00</Text>
       </View>
 
-      <ScrollView>
-        <Text>
+      <ScrollView style={styles.memoBody}>
+        <Text style={styles.memoBodyText}>
           買い物リスト
           書体やレイアウトなどを確認するために使います。
           買い物リスト
@@ -25,10 +25,44 @@ const Detail = (): JSX.Element => {
         </Text>
       </ScrollView>
 
-      <CircleButton>+</CircleButton>
+      <CircleButton style={{ top: 160, bottom: "auto" }}>+</CircleButton>
 
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#ffffff"
+  },
+  memoHeader: {
+    backgroundColor: "#467FD3",
+    height: 96,
+    justifyContent: "center",
+    paddingVertical: 24,
+    paddingHorizontal: 19
+  },
+  memoTitle:{
+    color: "#ffffff",
+    fontSize: 20,
+    fontWeight: "bold",
+    lineHeight: 32
+  },
+  memoDate:{
+    color: "#ffffff",
+    fontSize: 12,
+    lineHeight: 16
+  },
+  memoBody: {
+    paddingVertical: 32,
+    paddingHorizontal: 27
+  },
+  memoBodyText: {
+    fontSize: 16,
+    lineHeight: 24,
+    color: "#000000"
+  }
+})
 
 export default Detail
