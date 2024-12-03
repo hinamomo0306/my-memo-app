@@ -1,4 +1,4 @@
-import { View, Text, TextInput, StyleSheet } from "react-native"
+import { View, Text, TextInput, StyleSheet, Alert } from "react-native"
 import Header from "../../components/header"
 import Button from "../../components/button"
 
