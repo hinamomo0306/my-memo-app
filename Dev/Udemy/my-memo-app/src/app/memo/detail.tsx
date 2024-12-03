@@ -1,10 +1,11 @@
 import { View, Text, ScrollView, StyleSheet } from "react-native"
 
 // VectorIconsから指定のアイコンをインポート
-import { Entypo } from "@expo/vector-icons"
+// import { Entypo } from "@expo/vector-icons"
 
 import Header from "../../components/header"
 import CircleButton from "../../components/circleButton"
+import Icon from "../../components/icon"
 
 const Detail = (): JSX.Element => {
   return(
@@ -29,7 +30,7 @@ const Detail = (): JSX.Element => {
       </ScrollView>
 
       <CircleButton style={{ top: 160, bottom: "auto" }}>
-        <Entypo name="edit" size={30}/>
+        <Icon name="pencil" size={30} color="#ffffff"/>
       </CircleButton>
 
     </View>
