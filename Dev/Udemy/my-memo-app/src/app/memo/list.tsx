@@ -7,6 +7,11 @@ import Header from "../../components/header"
 import MemoListItem from "../../components/memoListItem"
 import CircleButton from "../../components/circleButton"
 import Icon from "../../components/icon"
+import { router } from "expo-router"
+
+const handlePress = (): void => {
+  router.push("/memo/create")
+}
 
 const List = (): JSX.Element => {
   return(
@@ -18,7 +23,7 @@ const List = (): JSX.Element => {
         <MemoListItem />
         <MemoListItem />
       </View>
-      <CircleButton>
+      <CircleButton onPress={handlePress}>
         <Icon name="plus" size={40} color="#ffffff"/>
       </CircleButton>
     </View>

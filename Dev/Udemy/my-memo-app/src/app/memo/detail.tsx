@@ -1,4 +1,5 @@
 import { View, Text, ScrollView, StyleSheet } from "react-native"
+import { router } from "expo-router"
 
 // VectorIconsから指定のアイコンをインポート
 // import { Entypo } from "@expo/vector-icons"
@@ -6,6 +7,10 @@ import { View, Text, ScrollView, StyleSheet } from "react-native"
 import Header from "../../components/header"
 import CircleButton from "../../components/circleButton"
 import Icon from "../../components/icon"
+
+const handlePress = (): void => {
+  router.push("/memo/edit")
+}
 
 const Detail = (): JSX.Element => {
   return(
@@ -29,7 +34,7 @@ const Detail = (): JSX.Element => {
         </Text>
       </ScrollView>
 
-      <CircleButton style={{ top: 160, bottom: "auto" }}>
+      <CircleButton onPress={handlePress} style={{ top: 160, bottom: "auto" }}>
         <Icon name="pencil" size={30} color="#ffffff"/>
       </CircleButton>
 
