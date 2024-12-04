@@ -4,6 +4,9 @@ import {
 import Header from "../../components/header"
 import Button from "../../components/button"
 
+// Link Component で遷移を設定できる
+import { Link } from "expo-router"
+
 const SignUp = () => {
   return(
     <View style = {styles.container}>
@@ -17,10 +20,11 @@ const SignUp = () => {
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already Registered?</Text>
-          
-          <TouchableOpacity>
-          <Text style={styles.footerLink}>Log in.</Text>
-          </TouchableOpacity>
+          <Link href="/auth/log_in" asChild>
+            <TouchableOpacity>
+              <Text style={styles.footerLink}>Log in.</Text>
+            </TouchableOpacity>
+          </Link>
         </View>
 
       </View>

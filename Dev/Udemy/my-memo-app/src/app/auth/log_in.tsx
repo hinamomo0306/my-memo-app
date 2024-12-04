@@ -2,6 +2,9 @@ import {
   View, Text, TextInput, TouchableOpacity, StyleSheet 
 } from "react-native"
 
+// Link Component で遷移を設定できる
+import { Link } from "expo-router"
+
 import Header from "../../components/header"
 import Button from "../../components/button"
 
@@ -18,9 +21,13 @@ const LogIn = () => {
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>Not Registered?</Text>
-          <TouchableOpacity>
-          <Text style={styles.footerLink}>Sign Up Here!</Text>
-          </TouchableOpacity>
+
+          <Link href="/auth/sign_up" asChild={true}>
+            <TouchableOpacity>
+              <Text style={styles.footerLink}>Sign Up Here!</Text>
+            </TouchableOpacity>
+          </Link>
+          
         </View>
 
       </View>
