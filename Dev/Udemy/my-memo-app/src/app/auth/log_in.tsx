@@ -3,12 +3,17 @@ import {
 } from "react-native"
 
 // Link Component で遷移を設定できる
-import { Link } from "expo-router"
+import { Link, router } from "expo-router"
 
 import Header from "../../components/header"
 import Button from "../../components/button"
 
-const LogIn = () => {
+const handlePress = (): void => {
+  // Login
+  router.push("/memo/list")
+}
+
+const LogIn = (): JSX.Element => {
   return(
     <View style = {styles.container}>
       <Header />
@@ -17,7 +22,7 @@ const LogIn = () => {
         <TextInput style={styles.input} value="email address" />
         <TextInput style={styles.input}  value="password" />
 
-        <Button label="Submit" />
+        <Button label="Submit" onPress={handlePress} />
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>Not Registered?</Text>
@@ -27,7 +32,7 @@ const LogIn = () => {
               <Text style={styles.footerLink}>Sign Up Here!</Text>
             </TouchableOpacity>
           </Link>
-          
+
         </View>
 
       </View>

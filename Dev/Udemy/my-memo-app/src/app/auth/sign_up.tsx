@@ -5,7 +5,14 @@ import Header from "../../components/header"
 import Button from "../../components/button"
 
 // Link Component で遷移を設定できる
-import { Link } from "expo-router"
+import { Link, router } from "expo-router"
+
+// Button component's "onPress" function argument "handlePress"
+// router.push push us to the specified link "/memo/list"
+const handlePress = (): void => {
+  // Sign_up
+  router.push("/memo/list")
+}
 
 const SignUp = () => {
   return(
@@ -16,15 +23,17 @@ const SignUp = () => {
         <TextInput style={styles.input} value="email address" />
         <TextInput style={styles.input}  value="password" />
 
-        <Button label="Submit" />
+        <Button label="Submit" onPress={handlePress} />
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already Registered?</Text>
+
           <Link href="/auth/log_in" asChild>
             <TouchableOpacity>
               <Text style={styles.footerLink}>Log in.</Text>
             </TouchableOpacity>
           </Link>
+        
         </View>
 
       </View>
