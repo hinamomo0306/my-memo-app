@@ -4,9 +4,9 @@ import {
 
 // Link Component で遷移を設定できる
 import { Link, router } from "expo-router"
-
 // import Header from "../../components/header"
 import Button from "../../components/button"
+import { useState } from "react"
 
 // Button component's "onPress" function argument "handlePress"
 // router.push push us to the specified link "/memo/list"
@@ -18,12 +18,24 @@ const handlePress = (): void => {
 }
 
 const LogIn = (): JSX.Element => {
+  const [email, setEmail] = useState("Email Address") // 初期値＝Email Address
+  const [password, setPassword] = useState("Password") // 初期値＝Password
+
   return(
     <View style = {styles.container}>
       <View style={styles.inner}>
         <Text style={styles.title}>Log In</Text>
-        <TextInput style={styles.input} value="email address" />
-        <TextInput style={styles.input}  value="password" />
+        <TextInput
+          style={styles.input}
+          value={email}
+          onChangeText={(text) => {setEmail(text)}}
+        />
+        
+        <TextInput
+          style={styles.input}
+          value={password}
+          onChangeText={(text) => {setPassword(text)}} 
+        />
 
         <Button label="Submit" onPress={handlePress} />
 
