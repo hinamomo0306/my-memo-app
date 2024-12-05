@@ -3,9 +3,9 @@ import {
 } from "react-native"
 // import Header from "../../components/header"
 import Button from "../../components/button"
-
 // Link Component で遷移を設定できる
 import { Link, router } from "expo-router"
+import { useState } from "react"
 
 // Button component's "onPress" function argument "handlePress"
 // router.push push us to the specified link "/memo/list"
@@ -15,12 +15,32 @@ const handlePress = (): void => {
 }
 
 const SignUp = () => {
+  const [email, setEmail] = useState("") // 初期値＝blank
+  const [password, setPassword] = useState("") // 初期値＝blank
+
   return(
     <View style = {styles.container}>
       <View style={styles.inner}>
         <Text style={styles.title}>Sign Up</Text>
-        <TextInput style={styles.input} value="email address" />
-        <TextInput style={styles.input}  value="password" />
+        <TextInput
+          style={styles.input}
+          value={email}
+          onChangeText={(text) => {setEmail(text)}}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          placeholder="Email Address"
+          textContentType="emailAddress"
+        />
+        
+        <TextInput
+          style={styles.input}
+          value={password}
+          onChangeText={(text) => {setPassword(text)}} 
+          autoCapitalize="none"
+          secureTextEntry={true}
+          placeholder="Password"
+          textContentType="password"
+        />
 
         <Button label="Submit" onPress={handlePress} />
 

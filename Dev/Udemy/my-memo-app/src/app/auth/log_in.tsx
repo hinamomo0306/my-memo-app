@@ -18,8 +18,8 @@ const handlePress = (): void => {
 }
 
 const LogIn = (): JSX.Element => {
-  const [email, setEmail] = useState("Email Address") // 初期値＝Email Address
-  const [password, setPassword] = useState("Password") // 初期値＝Password
+  const [email, setEmail] = useState("") // 初期値＝blank
+  const [password, setPassword] = useState("") // 初期値＝blank
 
   return(
     <View style = {styles.container}>
@@ -29,12 +29,20 @@ const LogIn = (): JSX.Element => {
           style={styles.input}
           value={email}
           onChangeText={(text) => {setEmail(text)}}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          placeholder="Email Address"
+          textContentType="emailAddress"
         />
         
         <TextInput
           style={styles.input}
           value={password}
           onChangeText={(text) => {setPassword(text)}} 
+          autoCapitalize="none"
+          secureTextEntry={true}
+          placeholder="Password"
+          textContentType="password"
         />
 
         <Button label="Submit" onPress={handlePress} />
