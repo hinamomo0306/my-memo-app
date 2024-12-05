@@ -10,9 +10,11 @@ import Button from "../../components/button"
 
 // Button component's "onPress" function argument "handlePress"
 // router.push push us to the specified link "/memo/list"
+// router.replace => no history
+// router.push => append history
 const handlePress = (): void => {
   // Login
-  router.push("/memo/list")
+  router.replace("/memo/list")
 }
 
 const LogIn = (): JSX.Element => {
