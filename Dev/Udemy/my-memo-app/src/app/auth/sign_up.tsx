@@ -1,7 +1,7 @@
 import { 
   View, Text, TextInput, TouchableOpacity,StyleSheet 
 } from "react-native"
-import Header from "../../components/header"
+// import Header from "../../components/header"
 import Button from "../../components/button"
 
 // Link Component で遷移を設定できる
@@ -17,7 +17,6 @@ const handlePress = (): void => {
 const SignUp = () => {
   return(
     <View style = {styles.container}>
-      <Header />
       <View style={styles.inner}>
         <Text style={styles.title}>Sign Up</Text>
         <TextInput style={styles.input} value="email address" />
