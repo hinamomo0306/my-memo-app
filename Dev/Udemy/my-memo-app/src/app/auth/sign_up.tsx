@@ -7,10 +7,8 @@ import Button from "../../components/button"
 import { Link, router } from "expo-router"
 import { useState } from "react"
 
-// 
+// 会員登録に必要なコンポーネント
 import { createUserWithEmailAndPassword } from "firebase/auth"
-
-// 
 import { auth } from "../../config"
 
 // Button component's "onPress" function argument "handlePress"
@@ -64,7 +62,7 @@ const SignUp = () => {
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already Registered?</Text>
 
-          <Link href="/auth/log_in" asChild>
+          <Link href="/auth/log_in" asChild replace>
             <TouchableOpacity>
               <Text style={styles.footerLink}>Log in.</Text>
             </TouchableOpacity>
