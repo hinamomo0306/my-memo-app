@@ -1,5 +1,5 @@
 import { 
-  View, Text, TextInput, TouchableOpacity,StyleSheet 
+  View, Text, TextInput, Alert, TouchableOpacity,StyleSheet 
 } from "react-native"
 // import Header from "../../components/header"
 import Button from "../../components/button"
@@ -7,13 +7,30 @@ import Button from "../../components/button"
 import { Link, router } from "expo-router"
 import { useState } from "react"
 
+// 
+import { createUserWithEmailAndPassword } from "firebase/auth"
+
+// 
+import { auth } from "../../config"
+
 // Button component's "onPress" function argument "handlePress"
 // router.push push us to the specified link "/memo/list"
-const handlePress = (): void => {
+const handlePress = (email: string, password: string): void => {
   // Sign_up
-  router.push("/memo/list")
+  console.log(email, password)
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      console.log(userCredential.user.uid)
+      router.replace("/memo/list")
+    })
+    .catch((error) => {
+      const { code, message } = error
+      console.log(code, message)
+      Alert.alert(message)
+    })
 }
 
+// row63 で指定したemail, passwordは、row20-21の値を受け取っている＝Userが入力した値
 const SignUp = () => {
   const [email, setEmail] = useState("") // 初期値＝blank
   const [password, setPassword] = useState("") // 初期値＝blank
@@ -42,7 +59,7 @@ const SignUp = () => {
           textContentType="password"
         />
 
-        <Button label="Submit" onPress={handlePress} />
+        <Button label="Submit" onPress={() => {handlePress(email, password)}} />
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already Registered?</Text>
@@ -58,7 +75,7 @@ const SignUp = () => {
       </View>
     </View>
   )
-}
+} // onPressを関数化 → handlePress関数を定義し引数にemailとpasswordを指定
 
 const styles = StyleSheet.create ({
   container: {
