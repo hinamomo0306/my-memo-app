@@ -5,7 +5,8 @@ import { onAuthStateChanged } from "firebase/auth"
 import { useEffect } from "react"
 import { auth } from "../config"
 
-const Index = () => {
+// useEffectで一度切りの処理とする=>onAuthStateChangedでuserのLogin状態を引数で受け取る=>If関数でuserがnullではなければメモリストに遷移
+const Index = (): JSX.Element => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user !== null) {

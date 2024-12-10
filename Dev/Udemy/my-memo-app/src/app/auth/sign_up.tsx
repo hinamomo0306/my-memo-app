@@ -1,8 +1,10 @@
 import { 
   View, Text, TextInput, Alert, TouchableOpacity,StyleSheet 
 } from "react-native"
+
 // import Header from "../../components/header"
 import Button from "../../components/button"
+
 // Link Component で遷移を設定できる
 import { Link, router } from "expo-router"
 import { useState } from "react"
