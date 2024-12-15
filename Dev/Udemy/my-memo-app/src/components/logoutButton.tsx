@@ -4,7 +4,6 @@ import { router } from "expo-router"
 import { auth } from "../config"
 
 const handlePress = (): void => {
-  console.log("関数が呼び出されました")
   signOut(auth)
     .then(() => {
       console.log("サインアウト成功")
@@ -20,7 +19,6 @@ const LogOutButton = (): JSX.Element => {
   return(
     <TouchableOpacity 
       onPress={() => { console.log("TouchableOpacity pressed"); handlePress()}}
-      hitSlop={{top:30, bottom:30, left:30, right:30}}
     >
       <Text style={styles.text}>ログアウト</Text>
     </TouchableOpacity>

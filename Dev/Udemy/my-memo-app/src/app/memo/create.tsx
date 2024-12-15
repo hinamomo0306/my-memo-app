@@ -2,13 +2,40 @@ import {
   View, TextInput, StyleSheet, KeyboardAvoidingView
  } from "react-native"
 
+// Firestore
+import { collection, addDoc } from "firebase/firestore"
+
 // import Header from "../../components/header"
 import CircleButton from "../../components/circleButton"
 import Icon from "../../components/icon"
 import { router } from "expo-router"
 
+// from config.ts
+import { db } from "../../config"
+
+
 const handlePress = (): void => {
+  addDoc(collection(db, "memos"), {
+    bodyText: "test"
+  })
+    .then((docRef)=>{
+      console.log("success", docRef.id)
+      router.back()
+    })
+
+    .catch((error)=>{
+      console.log(error)
+    })
+
+  /*
+  await addDoc(collection(db,"memos"),{
+    bodyText: "test2"
+  })
+    .catch((error)=>{
+      console.log(error)
+    })
   router.back()
+  */
 }
 
 const Create = (): JSX.Element => {
