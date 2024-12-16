@@ -1,6 +1,9 @@
 import { View, StyleSheet } from "react-native"
 import { router, useNavigation } from "expo-router"
 
+// Firestoreにクエリを実行するためのコンポーネント
+import { collection, onSnapshot, query, orderBy } from "firebase/firestore"
+
 // useEffectはReact Hockでcomponentを一度だけUpdateする
 import { useEffect } from "react"
 
@@ -11,6 +14,7 @@ import MemoListItem from "../../components/memoListItem"
 import CircleButton from "../../components/circleButton"
 import Icon from "../../components/icon"
 import LogOutButton from "../../components/logoutButton"
+import { db, auth } from "../../config"
 
 const handlePress = (): void => {
   router.push("/memo/create")
@@ -28,6 +32,18 @@ const List = (): JSX.Element => {
     })
     }, [])
 
+  /* */
+  useEffect(() => {
+    if (auth.currentUser === null) {return}
+    const ref = collection(db, `users/${auth.currentUser.uid}/memos`)
+    const q = query(ref, orderBy("updatedAt", "desc"))
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      snapshot.forEach((doc) => {
+        console.log("memo", doc.data())
+      })
+    })
+    return unsubscribe
+  }, [])
   return(
     // 一番外枠
     <View style={styles.container}>
