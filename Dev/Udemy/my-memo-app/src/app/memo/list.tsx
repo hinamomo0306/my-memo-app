@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native"
+import { View, StyleSheet, FlatList } from "react-native"
 import { router, useNavigation } from "expo-router"
 
 // Firestoreにクエリを実行するためのコンポーネント
@@ -35,7 +35,7 @@ const handlePress = (): void => {
 3. 画面が更新されたときに一度だけuseNavigationを実行する
 */
 const List = (): JSX.Element => {
-  /*memosにremoteMemosが代入される */
+  /*memosというObjectを作成しremoteMemosが代入される */
   const [ memos, setMemos ] = useState<Memo[]>([])
   const navigation = useNavigation ()
   useEffect(() => {
@@ -44,7 +44,6 @@ const List = (): JSX.Element => {
     })
     }, [])
 
-  /* */
   useEffect(() => {
     if (auth.currentUser === null) {return}
     const ref = collection(db, `users/${auth.currentUser.uid}/memos`)
@@ -70,13 +69,12 @@ const List = (): JSX.Element => {
     return unsubscribe
   }, [])
   return(
-    // 一番外枠
+    /*mapプロパティは配列の中を加工して返す(コールバック関数に加工する内容を記述) */
     <View style={styles.container}>
-      <View>
-        <MemoListItem />
-        <MemoListItem />
-        <MemoListItem />
-      </View>
+      <FlatList 
+        data={memos}
+        renderItem={({ item }) => { return <MemoListItem memo={item} /> }}
+      />
       <CircleButton onPress={handlePress}>
         <Icon name="plus" size={40} color="#ffffff"/>
       </CircleButton>
