@@ -1,5 +1,5 @@
 import { 
-  View, TextInput, StyleSheet, KeyboardAvoidingView
+  View, TextInput, StyleSheet
  } from "react-native"
 
 // Firestore
@@ -12,6 +12,7 @@ import { useState } from "react"
 import CircleButton from "../../components/circleButton"
 import Icon from "../../components/icon"
 import { router } from "expo-router"
+import KeyboardAvoidingView from "../../components/KeyboardAvoidingView"
 
 // from config.ts
 import { db, auth } from "../../config"
@@ -60,13 +61,14 @@ const Create = (): JSX.Element => {
   */  
   const [bodyText,setBodyText] = useState("")
   return(
-    <KeyboardAvoidingView behavior="height" style={styles.container}>
+    <KeyboardAvoidingView style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput 
         multiline
         style={styles.input}
         value={bodyText}
         onChangeText={(text) => { setBodyText(text) }}
+        autoFocus
         />
       </View>
       <CircleButton onPress={()=>{handlePress(bodyText)}}>
