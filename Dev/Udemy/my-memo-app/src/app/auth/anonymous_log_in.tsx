@@ -27,7 +27,7 @@ const handleAnonymousPress = (): void => {
   signInAnonymously(auth)
     .then((userCredential) => {
       console.log("Anonymous UID:", userCredential.user.uid)
-      router.replace("/memo/list")
+      router.replace("/memo/anonymous_list")
     })
     .catch((error) => {
       const { code, message } = error
