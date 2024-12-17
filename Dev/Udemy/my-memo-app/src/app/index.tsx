@@ -14,7 +14,7 @@ const Index = (): JSX.Element => {
       }
     })
   }, [])
-  return <Redirect href={"auth/log_in"} />
+  return <Redirect href={"auth/anonymous_log_in"} />
 }
 
 export default Index
