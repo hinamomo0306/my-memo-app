@@ -2,10 +2,7 @@ import {
   View, Text, TextInput, Alert, TouchableOpacity,StyleSheet 
 } from "react-native"
 
-// import Header from "../../components/header"
 import Button from "../../components/button"
-
-// Link Component で遷移を設定できる
 import { Link, router } from "expo-router"
 import { useState } from "react"
 
@@ -13,8 +10,6 @@ import { useState } from "react"
 import { createUserWithEmailAndPassword } from "firebase/auth"
 import { auth } from "../../config"
 
-// Button component's "onPress" function argument "handlePress"
-// router.push push us to the specified link "/memo/list"
 const handlePress = (email: string, password: string): void => {
   // Sign_up
   console.log(email, password)
@@ -30,7 +25,6 @@ const handlePress = (email: string, password: string): void => {
     })
 }
 
-// row63 で指定したemail, passwordは、row20-21の値を受け取っている＝Userが入力した値
 const SignUp = () => {
   const [email, setEmail] = useState("") // 初期値＝blank
   const [password, setPassword] = useState("") // 初期値＝blank
@@ -63,19 +57,17 @@ const SignUp = () => {
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already Registered?</Text>
-
           <Link href="/auth/log_in" asChild replace>
             <TouchableOpacity>
               <Text style={styles.footerLink}>Log in.</Text>
             </TouchableOpacity>
           </Link>
-        
         </View>
 
       </View>
     </View>
   )
-} // onPressを関数化 → handlePress関数を定義し引数にemailとpasswordを指定
+}
 
 const styles = StyleSheet.create ({
   container: {

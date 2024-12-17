@@ -53,7 +53,6 @@ const List = (): JSX.Element => {
       const remoteMemos: Memo[] = []
       /*forEachでdocの中の値を1つずつ取り出す */
       snapshot.forEach((doc) => {
-        console.log("memo", doc.data())
         /*doc.data()で返ってきた値からbodyText, updatedAtを抜き出す */
         const { bodyText, updatedAt } = doc.data()
         /*remoteMemosの中に値をpushし配列に格納 */
